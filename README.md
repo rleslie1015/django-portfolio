@@ -32,7 +32,7 @@ To start developent server:
 
 1.  Create a new app with this command
 
-        $ python manage.py startapp hello_world
+        $ python manage.py startapp projects
 
 2. Make sure to install apps in your project. In `personal_portfolio/settings.py` add the following line of code under INSTALLED_APPS:
 
@@ -43,29 +43,24 @@ To start developent server:
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        ->    'hello_world',
+        ->    'projects',
         ]
 
-3. Create a View and view function that renders html
+3. Create a View inside `projects/views.py` and add view functions that render html
 
-        from django.shortcuts import render
-
-        def hello_world(request):
-            return render(request, 'hello_world.html', {})
-
-4. Create the HTML template inside the app `hello_world/templates/hello_world.html` 
+4. Create the HTML template inside the app `projects/templates/projects.html` 
 
 5. Create the urls module for the application
 
-        $ touch hello_world/urls.py
+        $ touch projects/urls.py
 - Import the path object and apps view modules
 - Create a list of URL patterns and view objects:
 
         from django.urls import path
-        from hello_world import views
+        from projects import views
 
         urlpatterns = [
-            path('', views.hello_world, name='hello_world'),
+            path('', views.projects, name='projects'),
         ]
     
 6. Hook up URLs from application to main URLs in project
@@ -76,5 +71,21 @@ To start developent server:
 
         urlpatterns = [
             path('admin/', admin.site.urls),
-            path('', include('hello_world.urls')),
+            path('', include('projects.urls')),
         ]
+
+## HTML Templates
+To add a base template include it in `settings.py` under TEMPLATES.DIRS  
+
+    'DIRS': ['personal_portfolio/templates/'],
+
+## Database 
+- Tables are reffered to as models 
+- Add a models.py module to each app  
+Django field types: https://docs.djangoproject.com/en/2.1/ref/models/fields/
+- Make migrations with this command:  
+    
+        $ python manage.py makemigrations projects
+- Next apply migrations with migrate command  
+      
+        $ python manage.py migrate projects
