@@ -1,5 +1,5 @@
 # django-portfolio
-A tutorial 
+Learning Django from a tutorial https://realpython.com/get-started-with-django-1/
 
 ### Notes
 `Development Environment`: *`/Django-Portfolio/`* This is the main directory for the project.  
@@ -48,11 +48,12 @@ To start developent server:
 
 3. Create a View inside `projects/views.py` and add view functions that render html
 
-4. Create the HTML template inside the app `projects/templates/projects.html` 
+4. Create the HTML templates inside the app `projects/templates/projects_index.html` 
 
 5. Create the urls module for the application
 
         $ touch projects/urls.py
+        
 - Import the path object and apps view modules
 - Create a list of URL patterns and view objects:
 
